@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://sprites/Bullet/Bullet.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 6.57429, 6.45161 )
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/bullet.png-bf127d53460a0826f847c19a5a1ace6c.stex"
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.155, 0.155 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="CollisionShape2D"]
+rotation = -7.10543e-15
+scale = Vector2( 6.45161, 6.45161 )
+texture = SubResource( 2 )
