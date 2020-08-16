@@ -1,11 +1,14 @@
 extends Node2D
 
-func _ready():
-	center()
-	get_tree().get_root().connect("size_changed", self, "center")
+var Dogfight = preload("res://scenes/Dogfight/Dogfight.tscn")
 
-func center():
-	var size = OS.get_window_size()
-	position[0] = size[0] / 2
-	position[1] = size[1] / 2
-	print(position)
+var scene
+func load_scene():
+	if scene:
+		scene.queue_free()
+	scene = Dogfight.instance()
+	scene.get_node("Menu").connect("reload", self, "load_scene")
+	add_child(scene)
+
+func _ready():
+	load_scene()
